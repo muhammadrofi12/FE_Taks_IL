@@ -1,6 +1,7 @@
 package com.example.fe_taks_il.ui.screens
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
@@ -32,10 +33,12 @@ import com.example.fe_taks_il.ui.theme.PoppinsBold20
 import com.example.fe_taks_il.ui.theme.PoppinsMedium12
 import com.example.fe_taks_il.ui.theme.PoppinsRegular14
 import androidx.compose.material3.TextFieldDefaults.outlinedTextFieldColors
+import androidx.navigation.NavController
+import com.example.fe_taks_il.ui.theme.GreenLight
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen() {
+fun HomeScreen(navController: NavController) {
     var searchQuery by remember { mutableStateOf("") }
     var filteredMovies by remember { mutableStateOf(DummyData.movies) }
 
@@ -59,7 +62,7 @@ fun HomeScreen() {
         modifier = Modifier
             .fillMaxSize()
     ) {
-        // Logo
+        // Logo, Top App Bar
         Image(
             painter = painterResource(id = R.drawable.logo_rofz),
             contentDescription = "Rofz Movie Logo",
@@ -115,7 +118,10 @@ fun HomeScreen() {
         ) {
             // Movie List
             items(filteredMovies.take(10)) { movie ->
-                MovieCard(movie = movie)
+                MovieCard(
+                    movie = movie,
+                    navController = navController
+                )
             }
 
             // Movie Popular
@@ -138,7 +144,10 @@ fun HomeScreen() {
                         horizontalArrangement = Arrangement.spacedBy(16.dp)
                     ) {
                         items(popularMovies) { movie ->
-                            PopularMovieCard(movie = movie)
+                            PopularMovieCard(
+                                movie = movie,
+                                navController = navController
+                            )
                         }
                     }
                 }
@@ -148,14 +157,17 @@ fun HomeScreen() {
 }
 
 @Composable
-fun MovieCard(movie: Movies) {
+fun MovieCard(movie: Movies, navController: NavController) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .height(220.dp)
             .padding(start = 20.dp, end = 20.dp, bottom = 12.dp),
         shape = RoundedCornerShape(4.dp),
-        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = GreenLight
+        ),
     ) {
         Row(
             modifier = Modifier.padding(12.dp),
@@ -197,24 +209,28 @@ fun MovieCard(movie: Movies) {
                 )
                 Spacer(modifier = Modifier.height(8.dp))
                 Button(
-                    onClick = { },
+                    onClick = { navController.navigate("movie_detail/${movie.id}") },
                     colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary),
                     shape = RoundedCornerShape(8.dp),
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    Text("Watch Trailer")
+                    Text("See Detail")
                 }
             }
         }
     }
 }
 
+
 @Composable
-fun PopularMovieCard(movie: Movies) {
+fun PopularMovieCard(movie: Movies, navController: NavController) {
     Card(
         modifier = Modifier
             .width(160.dp)
-            .height(240.dp),
+            .height(240.dp)
+            .clickable {
+                navController.navigate("movie_detail/${movie.id}")
+            },
         shape = RoundedCornerShape(12.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
     ) {
@@ -229,7 +245,7 @@ fun PopularMovieCard(movie: Movies) {
 
 @Preview(showBackground = true)
 @Composable
-fun HomeScreenPreview() {
-    rememberNavController()
-    HomeScreen()
+fun PreviewHomeScreen() {
+    val dummyNavController = rememberNavController()
+    HomeScreen(navController = dummyNavController)
 }

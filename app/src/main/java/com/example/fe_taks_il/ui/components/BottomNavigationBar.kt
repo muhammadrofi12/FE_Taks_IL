@@ -26,15 +26,7 @@ import com.example.fe_taks_il.ui.theme.GreenPrimary
 import com.example.fe_taks_il.ui.theme.PoppinsMedium12
 import com.example.fe_taks_il.ui.theme.PoppinsRegular12
 
-sealed class Screen(val route: String, val title: String, val icon: Int) {
-    object Home : Screen("home", "Home", R.drawable.ic_home)
-    object Category : Screen("category", "Category", R.drawable.ic_category)
-    object Profile : Screen("profile", "Profile", R.drawable.ic_profile)
-
-    companion object {
-        val items = listOf(Home, Category, Profile)
-    }
-}
+data class Screen(val route: String, val title: String, val icon: Int)
 
 @Composable
 fun BottomNavigationBar(
@@ -44,6 +36,12 @@ fun BottomNavigationBar(
     // cek kondisi aktif
     val currentBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = currentBackStackEntry?.destination
+
+    val screens = listOf(
+        Screen("home", "Home", R.drawable.ic_home),
+        Screen("category", "Category", R.drawable.ic_category),
+        Screen("profile", "Profile", R.drawable.ic_profile)
+    )
 
     Box(
         modifier = modifier
@@ -82,7 +80,7 @@ fun BottomNavigationBar(
                 .padding(vertical = 8.dp),
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
-            Screen.items.forEach { screen ->
+            screens.forEach { screen ->
                 val isSelected = currentDestination?.hierarchy?.any {
                     it.route == screen.route
                 } == true

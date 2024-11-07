@@ -13,7 +13,7 @@ object DummyData {
             genre = "Animation, Science Fiction, Family",
             category = "Popular",
             sub_judul = "After a shipwreck, an intelligent robot called Roz is stranded on an uninhabited island.",
-            deskripsi = "A mind-bending thriller about dreams and reality.",
+            deskripsi = "After a shipwreck, an intelligent robot called Roz is stranded on an uninhabited island. To survive the harsh environment, Roz bonds with the island's animals and cares for an orphaned baby goose.",
             link_trailer = "https://www.youtube.com/watch?v=YoHD9XEInc0"
         ),
         Movies(
