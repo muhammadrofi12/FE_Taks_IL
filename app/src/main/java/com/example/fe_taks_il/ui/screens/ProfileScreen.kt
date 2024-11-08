@@ -2,6 +2,7 @@ package com.example.fe_taks_il.ui.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.*
@@ -13,17 +14,18 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.fe_taks_il.R
 import com.example.fe_taks_il.ui.components.SocialMediaButton
 import com.example.fe_taks_il.ui.theme.*
 
 @Composable
-fun ProfileScreen(navController: NavController) {
+fun ProfileScreen() {
     val uriHandler = LocalUriHandler.current
 
     Column(
@@ -165,12 +167,28 @@ fun ProfileScreen(navController: NavController) {
             }
         }
 
+        Box {
+            Text(
+                text = "Data Movie by Web",
+                style = PoppinsMedium16,
+                fontStyle = FontStyle.Italic,
+                textDecoration = TextDecoration.Underline,
+                color = Error,
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .padding(top = 24.dp)
+                    .clickable(
+                        onClick = { uriHandler.openUri("https://movie-app-v1-rofz.vercel.app/") }
+                    )
+            )
+        }
+
     }
 }
 
 @Preview(showBackground = true)
 @Composable
 fun ProfileScreenPreview() {
-    val dummyNavController = rememberNavController()
-    ProfileScreen(navController = dummyNavController)
+    rememberNavController()
+    ProfileScreen()
 }

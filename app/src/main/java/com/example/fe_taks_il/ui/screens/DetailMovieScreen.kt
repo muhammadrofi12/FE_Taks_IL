@@ -12,7 +12,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -33,10 +33,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
 import com.example.fe_taks_il.ui.theme.GreenPrimary
-import com.example.fe_taks_il.ui.theme.PoppinsBold24
-import com.example.fe_taks_il.ui.theme.PoppinsBold26
 import com.example.fe_taks_il.ui.theme.PoppinsBold30
-import com.example.fe_taks_il.ui.theme.PoppinsMedium12
 import com.example.fe_taks_il.ui.theme.PoppinsMedium14
 import com.example.fe_taks_il.ui.theme.PoppinsMedium16
 import com.example.fe_taks_il.ui.theme.PoppinsRegular14
@@ -160,7 +157,7 @@ fun DetailMovieScreen(
                     .zIndex(2f)
             ) {
                 Icon(
-                    imageVector = Icons.Default.ArrowBack,
+                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                     contentDescription = "Back",
                     tint = Color.Black
                 )
@@ -173,7 +170,7 @@ fun DetailMovieScreen(
 @Composable
 fun DetailMovieScreenPreview() {
     DetailMovieScreen(
-        movieId = 1,
+            movieId = 1,
         navController = rememberNavController()
     )
 }

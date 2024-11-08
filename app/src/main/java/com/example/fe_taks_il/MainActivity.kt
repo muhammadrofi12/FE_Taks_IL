@@ -63,7 +63,7 @@ fun MainScreen() {
                 CategoryScreen(navController = navController)
             }
             composable(Screen("profile", "Profile", R.drawable.ic_profile).route) {
-                ProfileScreen(navController = navController)
+                ProfileScreen()
             }
 
             composable(

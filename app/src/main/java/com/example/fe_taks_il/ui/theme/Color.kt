@@ -17,7 +17,3 @@ val BrownLight = Color(0xFFFEFCEC)
 // Validation
 val Warning = Color(0xFFFFB82E)
 val Error = Color(0xFFF93232)
-val BgWarning = Color(0xFFFFFBF4)
-val BgError = Color(0xFFFFF5F5)
-val StrokeWarning = Color(0xFFFFEAC1)
-val StrokeError = Color(0xFFFFD8D8)

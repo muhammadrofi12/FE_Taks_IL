@@ -223,7 +223,7 @@ object DummyData {
             category = "Top Rated",
             sub_judul = "High schoolers Mitsuha and Taki are complete strangers living separate lives. But one night, they suddenly switch places. Mitsuha wakes up in Taki’s body, and he in hers. This bizarre occurrence continues to happen randomly, and the two must adjust their lives around each other.",
             deskripsi = "A beloved tale of courage and family.",
-            link_trailer = "https://www.youtube.com/watch?v=TbQm5doF_Uc"
+            link_trailer = "https://youtu.be/a2GujJZfXpg?si=i68KAZNKDQiihfqB"
         ),
         Movies(
             id = 21,
